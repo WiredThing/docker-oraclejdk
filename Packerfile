@@ -8,9 +8,9 @@
     "build_date":"",
     "environment":"staging",
 
-    "jdk_version":"7u60",
+    "jdk_version":"7u72",
 
-    "coreos_ami":"ami-d928e3ae"
+    "coreos_ami":"ami-46d47e31"
   },
   "builders": [{
     "type": "amazon-ebs",
@@ -20,7 +20,7 @@
     "source_ami": "{{user `coreos_ami`}}",
     "instance_type": "t1.micro",
     "ssh_username": "core",
-    "ami_name": "CoreOS Oracle JDK {{user `jdk_version`}} {{user `environment`}} {{user `build_date`}}"
+    "ami_name": "CoreOS (444.5.1) Oracle JDK {{user `jdk_version`}} {{user `environment`}} {{user `build_date`}}"
   }],
   "provisioners": [{
       "type": "shell",
