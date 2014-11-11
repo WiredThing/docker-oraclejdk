@@ -1,0 +1,30 @@
+{
+  "variables": {
+    "region":"eu-west-1",
+
+    "aws_access_key": "",
+    "aws_secret_key": "",
+
+    "build_date":"",
+    "environment":"staging",
+
+    "jdk_version":"7u60",
+
+    "coreos_ami":"ami-d928e3ae"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "{{user `region`}}",
+    "source_ami": "{{user `coreos_ami`}}",
+    "instance_type": "t1.micro",
+    "ssh_username": "core",
+    "ami_name": "CoreOS Oracle JDK {{user `jdk_version`}} {{user `environment`}} {{user `build_date`}}"
+  }],
+  "provisioners": [{
+      "type": "shell",
+      "environment_vars": ["JDK_VERSION={{ user `jdk_version` }}"],
+      "script": "provision.sh"
+  }]
+}

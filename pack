@@ -1,0 +1,6 @@
+#!/bin/bash
+
+export build_date=`date +%Y.%h.%d.%H.%M`
+echo $build_date
+
+packer build -var build_date=$build_date -var aws_access_key=$AWS_ACCESS_KEY -var aws_secret_key=$AWS_SECRET_KEY Packerfile
